@@ -6,20 +6,27 @@ on:
       - main
 
 jobs:
-  build:
+  file_existence:
     runs-on: ubuntu-latest
-
     steps:
-      - name: "Check files"
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Check file existence
+        id: check_files
         uses: andstor/file-existence-action@v1
         with:
           files: "LICENSE, README.md, example"
 
       - name: File exists
-          if: steps.check_files.outputs.files_exists == 'true'
-          # Only runs if all of the files exists
-          run: echo All files exists!
+        if: steps.check_files.outputs.files_exists == 'true'
+        # Only runs if all of the files exists
+        run: echo All files exists!
 
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 

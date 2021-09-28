@@ -43,10 +43,6 @@ jobs:
   package-analysis:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: packages/analytics
-
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2

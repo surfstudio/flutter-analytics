@@ -1,6 +1,6 @@
 ---
 name: Bug fix
-about: Fixing a problem with Surf Gear.
+about: Fixing a problem with Surf Gear Analytics.
 assignees: MbIXjkee
 ---
 

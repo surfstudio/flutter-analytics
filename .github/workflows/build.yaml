@@ -19,7 +19,7 @@ jobs:
           files: "LICENSE, README.md, example"
 
       - name: File exists
-        if: steps.check_files.outputs.files_exists == 'true'
+        if: steps.file_existence.outputs.files_exists == 'true'
         # Only runs if all of the files exists
         run: echo All files exists!
 

@@ -18,5 +18,4 @@
 /// to be handled by AnalyticActionPerformer.
 abstract class AnalyticAction {
   const AnalyticAction();
-  asdaksdjalskdj
 }

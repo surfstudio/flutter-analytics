@@ -70,16 +70,7 @@ jobs:
 
       - name: Run test ⚙️
         run: |
-          flutter test --coverage
-          mv coverage/lcov.info coverage/lcov.base.info
-
-      - name: Report code coverage ⚙️
-        uses: zgosalvez/github-actions-report-lcov@v1
-        with:
-          coverage-files: coverage/lcov.*.info
-          minimum-coverage: 70
-          artifact-name: code-coverage-report
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flutter test
 
   build_android_example:
     runs-on: ubuntu-latest

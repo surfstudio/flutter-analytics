@@ -69,8 +69,7 @@ jobs:
         run: flutter format --set-exit-if-changed .
 
       - name: Run test ⚙️
-        run: |
-          flutter test
+        run: flutter test
 
   build_android_example:
     runs-on: ubuntu-latest

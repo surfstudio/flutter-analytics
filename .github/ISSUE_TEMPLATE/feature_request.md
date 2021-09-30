@@ -1,6 +1,6 @@
 ---
 name: Feature Request
-about: I'd like Flutter Surf Util to do something new.
+about: I'd like Flutter Analytics to do something new.
 labels: enhancement
 assignees: MbIXjkee
 ---

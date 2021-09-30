@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Something is wrong with Flutter Surf Util.
+about: Something is wrong with Flutter Analytics.
 title: "[BUG] "
 labels: bug
 assignees: MbIXjkee

@@ -25,6 +25,7 @@ jobs:
         run: |
           dart pub global activate dependency_validator
           dart pub global run dependency_validator:dependency_validator
+
       - name: Run analyzer 🔍
         run: flutter analyze --fatal-warnings --fatal-infos .
 

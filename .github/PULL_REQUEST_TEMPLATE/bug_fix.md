@@ -1,6 +1,6 @@
 ---
 name: Bug fix
-about: Fixing a problem with Flutter Surf Util.
+about: Fixing a problem with Flutter Analytics.
 assignees: MbIXjkee
 ---
 

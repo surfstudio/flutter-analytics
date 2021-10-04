@@ -69,5 +69,5 @@ jobs:
         run: |
           cd example
           flutter pub get
-          flutter build apk --scan
+          flutter build apk --split-per-abi
 

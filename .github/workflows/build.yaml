@@ -25,7 +25,7 @@ jobs:
           flutter build apk
 
   build_ios_example:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     steps:
       - name: Checkout 🛎️

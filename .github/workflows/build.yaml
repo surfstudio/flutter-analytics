@@ -22,7 +22,7 @@ jobs:
         run: |
           cd example
           flutter pub get
-          flutter build apk
+          flutter build apk --target-platform android-arm,android-arm64,android-x64
 
   build_ios_example:
     runs-on: macos-latest

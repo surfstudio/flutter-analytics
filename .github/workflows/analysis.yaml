@@ -17,7 +17,7 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-  requirements_analysis:
+  checking_requirements:
     runs-on: ubuntu-latest
 
     steps:

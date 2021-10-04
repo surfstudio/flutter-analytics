@@ -6,38 +6,26 @@ on:
       - main
 
 jobs:
-  build_android_example:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-
-      - name: Install Flutter 🔧
-        uses: subosito/flutter-action@v1
-        with:
-          channel: "stable"
-
-      - name: Build
-        run: |
-          cd example
-          flutter pub get
-          flutter build apk --target-platform android-arm,android-arm64,android-x64
-
   build_ios_example:
     runs-on: macos-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install Flutter 🔧
+      - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
 
-      - name: Build
+      - name: Build iOS
         run: |
           cd example
           flutter pub get
           flutter build ios --release --no-codesign
+
+      - name: Build Android
+        run: |
+          cd example
+          flutter pub get
+          flutter build apk

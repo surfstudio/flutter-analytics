@@ -4,9 +4,9 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - 'lib'
-      - 'example'
+#    paths:
+#      - 'lib'
+#      - 'example'
 
 jobs:
   build_examples:

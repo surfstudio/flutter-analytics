@@ -64,10 +64,3 @@ jobs:
 
       - name: Run test
         run: flutter test
-
-      - name: Build Android
-        run: |
-          cd example
-          flutter pub get
-          flutter build apk --split-per-abi -v
-

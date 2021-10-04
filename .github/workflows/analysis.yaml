@@ -1,4 +1,4 @@
-name: test
+name: analysis
 
 on:
   pull_request:
@@ -65,4 +65,9 @@ jobs:
       - name: Run test
         run: flutter test
 
+      - name: Build Android
+        run: |
+          cd example
+          flutter pub get
+          flutter build apk --scan
 

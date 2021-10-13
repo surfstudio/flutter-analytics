@@ -1,4 +1,4 @@
-name: build
+name: build_example
 
 on:
   pull_request:

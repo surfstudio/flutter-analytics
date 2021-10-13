@@ -1,0 +1,34 @@
+name: build
+
+on:
+  workflow_run:
+    workflows: ["analysis"]
+    types: [completed]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build iOS
+        run: |
+          cd example
+          flutter pub get
+          flutter build ios --release --no-codesign
+
+      - name: Build Android
+        run: |
+          cd example
+          flutter pub get
+          flutter build apk

@@ -7,7 +7,7 @@ on:
 
 jobs:
   package_analysis:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   checking_requirements:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -62,4 +62,4 @@ jobs:
         run: flutter format --set-exit-if-changed .
 
       - name: Run test
-        run: flutter test 
+        run: flutter test

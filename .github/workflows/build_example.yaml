@@ -3,6 +3,7 @@ name: "Build package examples"
 on:
   workflow_run:
     workflows: ["Analysis"]
+    branches: [main]
     # types:
       # - completed
 

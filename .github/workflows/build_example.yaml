@@ -20,22 +20,23 @@ jobs:
         with:
           java-version: "12.x"
 
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-      # - name: Android NDK toolchain Setup
-      #   uses: nttld/setup-ndk@v1
-      #   id: setup-ndk
-      #   with:
-      #     ndk-version: r21e
-      #     add-to-path: false
-      # - run: ./build.sh
-      #   env:
-      #     ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
-
       - name: Install Flutter
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Android NDK toolchain Setup
+        uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21e
+          add-to-path: false
+      - run: ./build.sh
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
 
       - name: Install dependencies
         run: flutter pub get

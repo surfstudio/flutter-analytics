@@ -21,7 +21,7 @@ jobs:
           java-version: "12.x"
 
       - name: Android NDK toolchain Setup
-      - uses: nttld/setup-ndk@v1
+        uses: nttld/setup-ndk@v1
         id: setup-ndk
         with:
           ndk-version: r21e

@@ -21,8 +21,9 @@ jobs:
         java-version: '12.x'
 
     - name: Android NDK toolchain Setup 
-    - uses: actions/checkout@v2
-    - uses: nttld/setup-ndk@v1
+      uses: actions/checkout@v2
+    - name: Android NDK toolchain Setup 
+      uses: nttld/setup-ndk@v1
       with:
         ndk-version: r21e
     - run: ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk

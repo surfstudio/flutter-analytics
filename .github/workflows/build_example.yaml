@@ -3,8 +3,8 @@ name: "Build package examples"
 on:
   workflow_run:
     workflows: ["Analysis"]
-    types:
-      - completed
+    # types:
+      # - completed
 
 jobs:
   build_android_example:

@@ -1,4 +1,4 @@
-name: "Build package example"
+name: "Build package examples"
 
 on:
   pull_request:

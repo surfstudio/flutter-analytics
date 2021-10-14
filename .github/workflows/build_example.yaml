@@ -3,46 +3,47 @@ name: "Build package examples"
 on:
   pull_request:
     branches:
-      - main 
-    
+      - main
+
   # workflow_run:
-    # workflows: ["/Analysis"]
-    # types: [completed]
+  # workflows: ["/Analysis"]
+  # types: [completed]
 
 jobs:
   build_android_example:
     runs-on: ubuntu-latest
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-        # Setup Java environment in order to build the Android app.
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '12.x'
+      # Setup Java environment in order to build the Android app.
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
 
-    - name: Android NDK toolchain Setup 
-      uses: actions/checkout@v2
-    - name: Android NDK toolchain Setup 
-      uses: nttld/setup-ndk@v1
-      with:
-        ndk-version: r21e
-    - run: ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./Android.mk NDK_APPLICATION_MK=./Application.mk
+      - name: Android NDK toolchain Setup
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk
+        with:
+          ndk-version: r21e
+          add-to-path: false
+      - run: ./build.sh
+        env:
+          ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
 
-    - name: Install Flutter
-      uses: subosito/flutter-action@v1
-      with:
-        channel: "stable"
+      - name: Install dependencies
+        run: flutter pub get
 
-    - name: Install dependencies
-      run: flutter pub get
+      - name: Build Android
+        run: |
+          cd example
+          flutter pub get
+          flutter build apk
 
-    - name: Build Android
-      run: |
-        cd example
-        flutter pub get
-        flutter build apk
-  
   build_ios_example:
     runs-on: macos-latest
     # if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -63,4 +64,3 @@ jobs:
           cd example
           flutter pub get
           flutter build ios --release --no-codesign
-

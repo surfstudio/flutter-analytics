@@ -2,7 +2,7 @@ name: "Build package example"
 
 on:
   workflow_run:
-    workflows: ["analysis"]
+    workflows: ["Analysis"]
     types: [completed]
 
 jobs:

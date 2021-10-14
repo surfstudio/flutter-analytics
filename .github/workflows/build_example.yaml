@@ -1,10 +1,6 @@
 name: "Build package examples"
 
 on:
-  pull_request:
-    branches:
-      - main
-
   workflow_run:
     workflows: ["Analysis"]
     types: [completed]

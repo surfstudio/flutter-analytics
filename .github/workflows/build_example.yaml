@@ -20,6 +20,8 @@ jobs:
         with:
           java-version: "12.x"
 
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Android NDK toolchain Setup
         uses: nttld/setup-ndk@v1
         id: setup-ndk

@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -30,16 +33,6 @@ jobs:
 
       - name: Run formatter ⚙️
         run: flutter format --set-exit-if-changed .
-
-      - name: Run tests ⚙️
-        run: flutter test
-
-  package-analysis:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
 
       - name: Run package analyzer 🔍
         uses: axel-op/dart-package-analyzer@v3

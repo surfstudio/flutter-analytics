@@ -62,7 +62,6 @@ jobs:
     needs: analysis
     runs-on: ubuntu-latest
     
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       # Setup Java environment in order to build the Android app.
       - uses: actions/checkout@v2

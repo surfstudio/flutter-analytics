@@ -1,18 +1,16 @@
 name: "Build package examples"
 
 on:
-  pull_request:
-    branches:
-      - main
-
-  # workflow_run:
-  # workflows: ["/Analysis"]
-  # types: [completed]
+  workflow_run:
+    workflows: ["Analysis"]
+    types:
+      - completed
 
 jobs:
   build_android_example:
     runs-on: ubuntu-latest
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       # Setup Java environment in order to build the Android app.
       - uses: actions/checkout@v2
@@ -36,7 +34,7 @@ jobs:
 
   build_ios_example:
     runs-on: macos-latest
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2

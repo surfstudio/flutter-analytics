@@ -20,9 +20,9 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 class FirebaseAnalyticEventSender
     implements AnalyticActionPerformer<FirebaseAnalyticEvent> {
-  const FirebaseAnalyticEventSender(this._firebaseAnalytics);
-
   final FirebaseAnalytics _firebaseAnalytics;
+
+  const FirebaseAnalyticEventSender(this._firebaseAnalytics);
 
   @override
   bool canHandle(AnalyticAction action) => action is FirebaseAnalyticEvent;

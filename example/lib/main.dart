@@ -38,20 +38,20 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  final String title;
+
   const MyHomePage({
     required this.title,
     Key? key,
   }) : super(key: key);
-
-  final String title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late AnalyticService _analyticsService;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  late AnalyticService _analyticsService;
 
   @override
   void initState() {
@@ -60,14 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
     final analytics = FirebaseAnalytics();
     _analyticsService = DefaultAnalyticService()
       ..addActionPerformer(FirebaseAnalyticEventSender(analytics));
-  }
-
-  void _sendAnalyticAction(AnalyticAction action) {
-    _analyticsService.performAction(action);
-
-    ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
-    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
-        .showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 
   @override
@@ -103,5 +95,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  void _sendAnalyticAction(AnalyticAction action) {
+    _analyticsService.performAction(action);
+
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 }

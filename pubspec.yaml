@@ -1,7 +1,6 @@
 name: analytics
 version: 1.0.1
-description: |
-  Interface for working with analytic services. The library is supposed to unify work with various analytic services.
+description: Interface for working with analytic services. The library is supposed to unify work with various analytic services.
 repository: "https://github.com/surfstudio/flutter-analytics"
 issue_tracker: "https://github.com/surfstudio/flutter-analytics/issues"
 

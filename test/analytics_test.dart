@@ -20,12 +20,17 @@ import 'package:analytics/impl/default_analytic_service.dart';
 import 'package:test/test.dart';
 
 const actionPerformed = 'Action performed';
+const emptyActionPerformed = '';
 
-final log = <String>[];
+List<String> log = <String>[];
 
 class TestAction extends AnalyticAction {}
 
 class TestPerformer extends AnalyticActionPerformer<TestAction> {
+  final String actionPerformed;
+
+  const TestPerformer({required this.actionPerformed});
+
   @override
   void perform(TestAction action) {
     // ignore: avoid_print
@@ -34,13 +39,19 @@ class TestPerformer extends AnalyticActionPerformer<TestAction> {
 }
 
 void main() {
+  tearDown(
+    () {
+      log = [];
+    },
+  );
+
   test(
     'DefaultAnalyticService performs action',
     overridePrint(
       () {
         final service = DefaultAnalyticService();
 
-        final performer = TestPerformer();
+        const performer = TestPerformer(actionPerformed: actionPerformed);
 
         service.addActionPerformer(performer);
 
@@ -49,6 +60,25 @@ void main() {
         service.performAction(action);
 
         expect(log, [actionPerformed]);
+      },
+    ),
+  );
+
+  test(
+    'DefaultAnalyticService performs action(empty)',
+    overridePrint(
+      () {
+        final service = DefaultAnalyticService();
+
+        const performer = TestPerformer(actionPerformed: emptyActionPerformed);
+
+        service.addActionPerformer(performer);
+
+        final action = TestAction();
+
+        service.performAction(action);
+
+        expect(log, [emptyActionPerformed]);
       },
     ),
   );

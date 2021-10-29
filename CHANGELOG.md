@@ -2,14 +2,13 @@
 
 ## next
 
-* Update gitignore.
 * Refactoring.
 
-## 1.0.1 - 2021-05-30
+## 1.0.1
 
 * Stable release
 
-## 1.0.0-dev.1 - 2021-05-24
+## 1.0.0-dev.1
 
 * Cleanup pubspec.yaml
 

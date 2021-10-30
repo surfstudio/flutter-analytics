@@ -17,28 +17,23 @@ import 'dart:async';
 import 'package:analytics/core/analytic_action.dart';
 import 'package:analytics/core/analytic_action_performer.dart';
 import 'package:analytics/impl/default_analytic_service.dart';
+import 'package:logger/logger.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 const actionPerformed = 'Action performed';
-const emptyActionPerformed = '';
 
 List<String> log = <String>[];
 
-class TestAction extends AnalyticAction {}
-
-class TestPerformer extends AnalyticActionPerformer<TestAction> {
-  final String actionPerformed;
-
-  const TestPerformer({required this.actionPerformed});
-
-  @override
-  void perform(TestAction action) {
-    // ignore: avoid_print
-    print(actionPerformed);
-  }
-}
-
 void main() {
+  late MockLogger logger;
+
+  setUp(
+    () {
+      logger = MockLogger();
+    },
+  );
+
   tearDown(
     () {
       log = [];
@@ -46,7 +41,7 @@ void main() {
   );
 
   test(
-    'DefaultAnalyticService performs action',
+    'Calling performAction method with correct action should work correctly',
     overridePrint(
       () {
         final service = DefaultAnalyticService();
@@ -65,24 +60,41 @@ void main() {
   );
 
   test(
-    'DefaultAnalyticService performs action(empty)',
-    overridePrint(
-      () {
-        final service = DefaultAnalyticService();
+    'When calling a method performAction with an incorrect action, '
+    'the method d must be called from the logger',
+    () async {
+      final service = DefaultAnalyticService(logger: logger);
 
-        const performer = TestPerformer(actionPerformed: emptyActionPerformed);
+      const performer = TestPerformer();
 
-        service.addActionPerformer(performer);
+      service.addActionPerformer(performer);
 
-        final action = TestAction();
+      final action = SecondTestAction();
 
-        service.performAction(action);
+      service.performAction(action);
 
-        expect(log, [emptyActionPerformed]);
-      },
-    ),
+      verify(() => logger.d(any<String>())).called(1);
+    },
   );
 }
+
+class TestAction extends AnalyticAction {}
+
+class SecondTestAction extends AnalyticAction {}
+
+class TestPerformer extends AnalyticActionPerformer<TestAction> {
+  final String? actionPerformed;
+
+  const TestPerformer({this.actionPerformed});
+
+  @override
+  void perform(TestAction action) {
+    // ignore: avoid_print
+    print(actionPerformed);
+  }
+}
+
+class MockLogger extends Mock implements Logger {}
 
 void Function() overridePrint(void Function() testFn) => () {
       final spec = ZoneSpecification(

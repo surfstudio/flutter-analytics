@@ -29,6 +29,12 @@ class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
         .forEach((performer) => performer.perform(action));
   }
 
+  /// Add [performer] to the service.
+  bool addActionPerformer(
+    AnalyticActionPerformer<AnalyticAction> performer,
+  ) =>
+      _performers.add(performer);
+
   List<AnalyticActionPerformer<AnalyticAction>> _getPerformersByAction(
     AnalyticAction event,
   ) {
@@ -40,13 +46,6 @@ class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
         ' ${event.runtimeType} in performers $_performers',
       );
     }
-
     return properPerformers;
   }
-
-  /// Add [performer] to the service.
-  bool addActionPerformer(
-    AnalyticActionPerformer<AnalyticAction> performer,
-  ) =>
-      _performers.add(performer);
 }

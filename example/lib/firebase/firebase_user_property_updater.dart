@@ -20,9 +20,9 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 class FirebaseUserPropertyUpdater
     implements AnalyticActionPerformer<FirebaseUserProperty> {
-  FirebaseUserPropertyUpdater(this._firebaseAnalytics);
-
   final FirebaseAnalytics _firebaseAnalytics;
+
+  FirebaseUserPropertyUpdater(this._firebaseAnalytics);
 
   @override
   bool canHandle(AnalyticAction action) => action is FirebaseUserProperty;

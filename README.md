@@ -75,6 +75,17 @@ Usage:
     analyticService.performAction(ButtonPressedAction());
 ```
 
+## Installation
+
+Add `analytics` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  analytics: $currentVersion$
+```
+
+<p>At this moment, the current version of <code>analytics</code> is <a href="https://pub.dev/packages/analytics"><img style="vertical-align:middle;" src="https://img.shields.io/pub/v/analytics.svg" alt="analytics version"></a>.</p>
+
 ## Changelog
 
 All notable changes to this project will be documented in [this file](./CHANGELOG.md).

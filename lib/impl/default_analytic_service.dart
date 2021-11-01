@@ -17,10 +17,14 @@ import 'package:analytics/core/analytic_action_performer.dart';
 import 'package:analytics/core/analytic_service.dart';
 
 import 'package:analytics/utils/logger.dart';
+import 'package:logger/logger.dart';
 
 /// Logs services and sends actions to the analyst.
 class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
   final _performers = <AnalyticActionPerformer<AnalyticAction>>{};
+  final Logger _logger;
+
+  DefaultAnalyticService({Logger? logger}) : _logger = logger ?? defaultLogger;
 
   /// Send analytic [action].
   @override
@@ -41,7 +45,7 @@ class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
     final properPerformers =
         _performers.where((performer) => performer.canHandle(event)).toList();
     if (properPerformers.isEmpty) {
-      logger.d(
+      _logger.d(
         'No action performer for action:'
         ' ${event.runtimeType} in performers $_performers',
       );

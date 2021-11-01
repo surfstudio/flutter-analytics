@@ -17,30 +17,36 @@ import 'dart:async';
 import 'package:analytics/core/analytic_action.dart';
 import 'package:analytics/core/analytic_action_performer.dart';
 import 'package:analytics/impl/default_analytic_service.dart';
+import 'package:logger/logger.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 const actionPerformed = 'Action performed';
 
-final log = <String>[];
-
-class TestAction extends AnalyticAction {}
-
-class TestPerformer extends AnalyticActionPerformer<TestAction> {
-  @override
-  void perform(TestAction action) {
-    // ignore: avoid_print
-    print(actionPerformed);
-  }
-}
+List<String> log = <String>[];
 
 void main() {
+  late MockLogger logger;
+
+  setUp(
+    () {
+      logger = MockLogger();
+    },
+  );
+
+  tearDown(
+    () {
+      log = [];
+    },
+  );
+
   test(
-    'DefaultAnalyticService performs action',
+    'Calling performAction method with correct action should work correctly',
     overridePrint(
       () {
         final service = DefaultAnalyticService();
 
-        final performer = TestPerformer();
+        const performer = TestPerformer(actionPerformed: actionPerformed);
 
         service.addActionPerformer(performer);
 
@@ -52,7 +58,43 @@ void main() {
       },
     ),
   );
+
+  test(
+    'When calling a method performAction with an incorrect action, '
+    'the method d must be called from the logger',
+    () async {
+      final service = DefaultAnalyticService(logger: logger);
+
+      const performer = TestPerformer();
+
+      service.addActionPerformer(performer);
+
+      final action = SecondTestAction();
+
+      service.performAction(action);
+
+      verify(() => logger.d(any<String>())).called(1);
+    },
+  );
 }
+
+class TestAction extends AnalyticAction {}
+
+class SecondTestAction extends AnalyticAction {}
+
+class TestPerformer extends AnalyticActionPerformer<TestAction> {
+  final String? actionPerformed;
+
+  const TestPerformer({this.actionPerformed});
+
+  @override
+  void perform(TestAction action) {
+    // ignore: avoid_print
+    print(actionPerformed);
+  }
+}
+
+class MockLogger extends Mock implements Logger {}
 
 void Function() overridePrint(void Function() testFn) => () {
       final spec = ZoneSpecification(

@@ -17,6 +17,5 @@ import 'package:analytics/analytics.dart';
 /// A unified entry point for several [AnalyticActionPerformer]s.
 // ignore: one_member_abstracts
 abstract class AnalyticService<A extends AnalyticAction> {
-
   void performAction(A action);
 }

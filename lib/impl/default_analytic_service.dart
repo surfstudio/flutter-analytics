@@ -24,9 +24,7 @@ class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
   final _performers = <AnalyticActionPerformer<AnalyticAction>>{};
   final Logger _logger;
 
-  DefaultAnalyticService({Logger? logger}) :
-    _logger = logger ?? defaultLogger;
-
+  DefaultAnalyticService({Logger? logger}) : _logger = logger ?? defaultLogger;
 
   /// Send analytic [action].
   @override

@@ -36,7 +36,7 @@ class FirebaseAnalyticEventSender
     );
   }
 
-  // Shortening of parameters to meet requirements of Firebase Analytics
+  // Shortening of parameters to meet requirements of Firebase Analytics.
   Map<String, dynamic> _cutParamsLength(Map<String, Object> params) {
     final resultParams = <String, dynamic>{};
     for (final key in params.keys) {

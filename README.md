@@ -1,7 +1,7 @@
 # Analytics
 
-[![Build Status](https://shields.io/github/workflow/status/surfstudio/SurfGear/build?logo=github&logoColor=white)](https://github.com/surfstudio/SurfGear/tree/main/packages/analytics)
-[![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/SurfGear?flag=analytics&logo=codecov&logoColor=white)](https://codecov.io/gh/surfstudio/SurfGear)
+[![Build Status](https://shields.io/github/workflow/status/surfstudio/flutter-analytics/build?logo=github&logoColor=white)](https://github.com/surfstudio/flutter-analytics)
+[![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/flutter-analytics?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/flutter-analytics)
 [![Pub Version](https://img.shields.io/pub/v/analytics?logo=dart&logoColor=white)](https://pub.dev/packages/analytics)
 [![Pub Likes](https://badgen.net/pub/likes/analytics)](https://pub.dev/packages/analytics)
 [![Pub popularity](https://badgen.net/pub/popularity/analytics)](https://pub.dev/packages/analytics/score)
@@ -75,26 +75,17 @@ Usage:
     analyticService.performAction(ButtonPressedAction());
 ```
 
-## Installation
-
-Add `analytics` to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  analytics: ^1.0.0
-```
-
 ## Changelog
 
 All notable changes to this project will be documented in [this file](./CHANGELOG.md).
 
 ## Issues
 
-For issues, file directly in the Issues section.
+To report your issues, submit directly in the [Issues](https://github.com/surfstudio/flutter-analytics/issues) section.
 
 ## Contribute
 
-If you would like to contribute to the package (e.g. by improving the documentation, solving a bug or adding a cool new feature), please review our [contribution guide](../../CONTRIBUTING.md) first and send us your pull request.
+If you would like to contribute to the package (e.g. by improving the documentation, fixing a bug or adding a cool new feature), please read our [contribution guide](./CONTRIBUTING.md) first and send us your pull request.
 
 Your PRs are always welcome.
 

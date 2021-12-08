@@ -9,6 +9,8 @@
 
 This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) toolkit made by [Surf](https://surf.ru).
 
+[![Analytics](https://i.ibb.co/WHdqSLd/Analytics.png)](https://github.com/surfstudio/SurfGear)
+
 ## Description
 
 Interface for working with analytic services.  

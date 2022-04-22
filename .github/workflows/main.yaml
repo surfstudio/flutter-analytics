@@ -62,9 +62,9 @@ jobs:
 
   testing:
     needs: analysis
+    uses: surfstudio/flutter-ci-workflows/.github/workflows/testing.yml@main
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/testing.yml@main
 
   build_android_example:
     needs: analysis

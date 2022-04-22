@@ -1,0 +1,20 @@
+name: "Publishing"
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  analysis:
+    uses: internetova/actions/.github/workflows/analysis.yml@main
+
+  package-publishing:
+    needs: analysis
+    uses: internetova/actions/.github/workflows/publish_to_pub.yml@main
+    with:
+      PANA_TOTAL: '100'
+    secrets:
+      CREDENTIAL_JSON: ${{ secrets.CREDENTIAL_JSON }}
+      OAUTH_ACCESS_TOKEN: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+      OAUTH_REFRESH_TOKEN: ${{ secrets.OAUTH_REFRESH_TOKEN }}

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:analytics/analytics.dart';
 import 'package:example/analytics_events.dart';
 import 'package:example/firebase/firebase_analytic_event_sender.dart';

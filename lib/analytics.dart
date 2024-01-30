@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-export 'package:analytics/core/analitic_stragery.dart';
 export 'package:analytics/core/analytic_action.dart';
 export 'package:analytics/core/analytic_action_performer.dart';
-export 'package:analytics/core/analytic_service.dart';
+export 'package:analytics/core/analytic_stragery.dart';
+export 'package:analytics/core/analytyc_service.dart';
 

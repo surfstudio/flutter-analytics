@@ -12,19 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:analytics/core/analitic_stragery.dart';
 import 'package:analytics/core/analytic_action.dart';
 import 'package:analytics/core/analytic_action_performer.dart';
+import 'package:analytics/core/analytic_stragery.dart';
 import 'package:analytics/utils/logger.dart';
 import 'package:logger/logger.dart';
 
 /// Class for instantiating analytic service.
 ///
-/// WARNING! Do not use this class directly for analitic action sending.
+/// WARNING! Do not use this class directly for analytic action sending.
 ///
-/// This class provides a way to send analitic action using a set of
-/// analitic strategies. To use this class, you should create an instance of it with a set of
-/// analitic strategies, and then call the `performAction` method to send analitic action.
+/// This class provides a way to send analytic action using a set of
+/// analytic strategies. To use this class, you should create an instance of it with a set of
+/// analytic strategies, and then call the `performAction` method to send analytic action.
 class AnalyticService implements AnalyticActionPerformer {
   /// Initialize analytic service without strategies.
   AnalyticService.empty({Logger? logger})

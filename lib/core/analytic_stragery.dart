@@ -15,12 +15,12 @@
 import 'package:analytics/core/analytic_action.dart';
 import 'package:analytics/core/analytic_action_performer.dart';
 
-/// Base class for analitic strategies.
+/// Base class for analytic strategies.
 ///
-/// This class is an abstract base class for analitic strategies. A analitic strategy is a class
+/// This class is an abstract base class for analytic strategies. A analytic strategy is a class
 /// that provides a specific way of sending analytic action. To create
-/// a custom analitic strategy, you should extend this class and implement the `performAction`
+/// a custom analytic strategy, you should extend this class and implement the `performAction`
 /// method.
-abstract class AnalyticStragery<A extends AnalyticAction> extends AnalyticActionPerformer {
+abstract class AnalyticStragery<A extends AnalyticAction> extends AnalyticActionPerformer<A> {
   bool canHandle(AnalyticAction action) => action is A;
 }

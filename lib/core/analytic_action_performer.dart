@@ -14,7 +14,7 @@
 
 import 'package:analytics/core/analytic_action.dart';
 
-/// An interface for log analytic action performers.
+/// An interface for analytic action performers.
 ///
 /// This interface define a method for sending analytic actions.
 /// Classes that implement this interface provide the actual analytic action performing functionality.

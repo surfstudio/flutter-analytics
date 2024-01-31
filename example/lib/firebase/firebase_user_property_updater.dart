@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import 'package:analytics/analytics.dart';
-import 'package:example/firebase/const.dart';
+import 'package:example/firebase/firebase_string_x.dart';
 import 'package:example/firebase/firebase_user_property.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -25,14 +25,8 @@ class FirebaseUserPropertyUpdaterStrategy extends AnalyticStragery<FirebaseUserP
   @override
   void performAction(FirebaseUserProperty action) {
     _firebaseAnalytics.setUserProperty(
-      name: _cutName(action.key),
-      value: _cutValue(action.value),
+      name: action.key.cutName,
+      value: action.value.cutValue,
     );
   }
-
-  String _cutName(String name) =>
-      name.length <= maxSetUserPropertyKeyLength ? name : name.substring(0, maxSetUserPropertyKeyLength);
-
-  String _cutValue(String value) =>
-      value.length <= maxSetUserPropertyValueLength ? value : value.substring(0, maxSetUserPropertyValueLength);
 }

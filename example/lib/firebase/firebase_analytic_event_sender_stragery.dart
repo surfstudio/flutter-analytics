@@ -14,8 +14,8 @@
 
 
 import 'package:analytics/core/analytic_stragery.dart';
-import 'package:example/firebase/const.dart';
 import 'package:example/firebase/firebase_analytic_event.dart';
+import 'package:example/firebase/firebase_string_x.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 class FirebaseAnalyticEventSenderStrategy extends AnalyticStragery<FirebaseAnalyticEvent> {
@@ -27,7 +27,7 @@ class FirebaseAnalyticEventSenderStrategy extends AnalyticStragery<FirebaseAnaly
   void performAction(FirebaseAnalyticEvent action) {
     final params = _cutParamsLength(action.params as Map<String, Object>);
     _firebaseAnalytics.logEvent(
-      name: _cutName(action.key),
+      name: action.key.cutName,
       parameters: params,
     );
   }
@@ -37,14 +37,9 @@ class FirebaseAnalyticEventSenderStrategy extends AnalyticStragery<FirebaseAnaly
     final resultParams = <String, dynamic>{};
     for (final key in params.keys) {
       final value = params[key];
-      resultParams[_cutName(key)] = value is String ? _cutValue(value) : value;
+      resultParams[key.cutName] = value is String ? value.cutValue : value;
     }
 
     return resultParams;
   }
-
-  String _cutName(String name) => name.length <= maxEventKeyLength ? name : name.substring(0, maxEventKeyLength);
-
-  String _cutValue(String value) =>
-      value.length <= maxEventValueLength ? value : value.substring(0, maxEventValueLength);
 }

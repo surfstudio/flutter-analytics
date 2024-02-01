@@ -106,5 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
     ScaffoldMessenger.of(_scaffoldKey.currentContext!)
         .showSnackBar(SnackBar(content: Text('action send: $action')));
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 }

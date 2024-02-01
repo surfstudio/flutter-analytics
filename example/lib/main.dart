@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _analyticsService.performAction(action);
 
     ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
-    ScaffoldMessenger.of(_scaffoldKey.currentContext!).showSnackBar(SnackBar(content: Text('action send: $action')));
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 }

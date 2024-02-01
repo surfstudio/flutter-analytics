@@ -15,7 +15,8 @@
 import 'package:example/app_metrica/app_metrica_analytic_event.dart';
 import 'package:example/firebase/firebase_analytic_event.dart';
 
-class FantasticButtonTappedEvent implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
+class FantasticButtonTappedEvent
+    implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
   @override
   String get key => 'fantastic_button_tapped';
 
@@ -28,7 +29,8 @@ class FantasticButtonTappedEvent implements FirebaseAnalyticEvent, AppMetricaAna
   String toString() => 'FantasticButtonTappedEvent';
 }
 
-class SparklingButtonTappedEvent implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
+class SparklingButtonTappedEvent
+    implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
   final String payload;
 
   @override
@@ -45,7 +47,8 @@ class SparklingButtonTappedEvent implements FirebaseAnalyticEvent, AppMetricaAna
   String toString() => 'SparklingButtonTappedEvent';
 }
 
-class DelightfulButtonTappedEvent implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
+class DelightfulButtonTappedEvent
+    implements FirebaseAnalyticEvent, AppMetricaAnalyticEvent {
   final bool isDelightful;
 
   @override

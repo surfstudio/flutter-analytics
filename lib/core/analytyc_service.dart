@@ -32,20 +32,23 @@ class AnalyticService implements AnalyticActionPerformer {
         _logger = logger ?? defaultLogger;
 
   /// Initialize analytic service with strategies.
-  AnalyticService.withStrategies(this._strategies, {Logger? logger}) : _logger = logger ?? defaultLogger;
+  AnalyticService.withStrategies(this._strategies, {Logger? logger})
+      : _logger = logger ?? defaultLogger;
   final Logger _logger;
 
   final Set<AnalyticStragery> _strategies;
 
   @override
   void performAction(AnalyticAction action) {
-    _getStrategiesByAction(action).forEach((strategy) => strategy.performAction(action));
+    _getStrategiesByAction(action)
+        .forEach((strategy) => strategy.performAction(action));
   }
 
   List<AnalyticActionPerformer<AnalyticAction>> _getStrategiesByAction(
     AnalyticAction event,
   ) {
-    final properStrategies = _strategies.where((strategies) => strategies.canHandle(event)).toList();
+    final properStrategies =
+        _strategies.where((strategies) => strategies.canHandle(event)).toList();
     if (properStrategies.isEmpty) {
       _logger.d(
         'No action performer for action:'

@@ -22,6 +22,7 @@ import 'package:analytics/core/analytic_action_performer.dart';
 /// a custom analytic strategy, you should extend this class and implement the `performAction`
 /// method.
 /// The `canHandle` method determines whether the analytical strategy is able to handle the incoming event.
-abstract class AnalyticStragery<A extends AnalyticAction> extends AnalyticActionPerformer<A> {
+abstract class AnalyticStragery<A extends AnalyticAction>
+    extends AnalyticActionPerformer<A> {
   bool canHandle(AnalyticAction action) => action is A;
 }

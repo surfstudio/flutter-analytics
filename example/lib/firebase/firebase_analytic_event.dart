@@ -16,4 +16,5 @@ import 'package:analytics/analytics.dart';
 import 'package:example/firebase/has_key.dart';
 import 'package:example/firebase/has_map_params.dart';
 
-abstract class FirebaseAnalyticEvent implements AnalyticAction, HasKey, HasMapParams {}
+abstract class FirebaseAnalyticEvent
+    implements AnalyticAction, HasKey, HasMapParams {}

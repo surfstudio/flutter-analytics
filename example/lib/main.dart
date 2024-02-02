@@ -14,7 +14,7 @@
 
 import 'package:analytics/analytics.dart';
 import 'package:example/analytics_events.dart';
-import 'package:example/firebase/firebase_analytic_event_sender_stragery.dart';
+import 'package:example/firebase/firebase_analytic_event_sender_strategy.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final analytics = FirebaseAnalytics();
     _analyticsService = AnalyticService.withStrategies(
-        {FirebaseAnalyticEventSenderStrategy(analytics)});
+      {FirebaseAnalyticEventSenderStrategy(analytics)},
+    );
   }
 
   @override
@@ -101,7 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
     _analyticsService.performAction(action);
 
     ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
-    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
-        .showSnackBar(SnackBar(content: Text('action send: $action')));
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!).showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 }

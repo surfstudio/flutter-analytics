@@ -78,7 +78,7 @@ class TestAction extends AnalyticAction {}
 
 class SecondTestAction extends AnalyticAction {}
 
-class TestStrategy extends AnalyticStragery<TestAction> {
+class TestStrategy extends AnalyticStrategy<TestAction> {
   TestStrategy({this.actionPerformed});
   final String? actionPerformed;
 

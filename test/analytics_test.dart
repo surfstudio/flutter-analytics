@@ -44,7 +44,8 @@ void main() {
       () {
         final strategy = TestStrategy(actionPerformed: actionPerformed);
 
-        final service = AnalyticService.withStrategies({strategy}, logger: logger);
+        final service =
+            AnalyticService.withStrategies({strategy}, logger: logger);
 
         final action = TestAction();
 
@@ -61,7 +62,8 @@ void main() {
     () async {
       final strategy = TestStrategy(actionPerformed: actionPerformed);
 
-      final service = AnalyticService.withStrategies({strategy}, logger: logger);
+      final service =
+          AnalyticService.withStrategies({strategy}, logger: logger);
 
       final action = SecondTestAction();
 
@@ -76,7 +78,7 @@ class TestAction extends AnalyticAction {}
 
 class SecondTestAction extends AnalyticAction {}
 
-class TestStrategy extends AnalyticStragery<TestAction> {
+class TestStrategy extends AnalyticStrategy<TestAction> {
   TestStrategy({this.actionPerformed});
   final String? actionPerformed;
 

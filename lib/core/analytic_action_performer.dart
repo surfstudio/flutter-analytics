@@ -20,5 +20,6 @@ import 'package:analytics/core/analytic_action.dart';
 /// Classes that implement this interface provide the actual analytic action performing functionality.
 // ignore: one_member_abstracts
 abstract class AnalyticActionPerformer<A extends AnalyticAction> {
+  /// Method of sending sending analytic actions.
   void performAction(A action);
 }

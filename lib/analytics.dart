@@ -14,6 +14,5 @@
 
 export 'package:analytics/core/analytic_action.dart';
 export 'package:analytics/core/analytic_action_performer.dart';
-export 'package:analytics/core/analytic_stragery.dart';
+export 'package:analytics/core/analytic_strategy.dart';
 export 'package:analytics/core/analytyc_service.dart';
-

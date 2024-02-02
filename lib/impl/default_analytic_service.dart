@@ -22,7 +22,7 @@ import 'package:logger/logger.dart';
 /// Logs services and sends actions to the analyst.
 class DefaultAnalyticService implements AnalyticService<AnalyticAction> {
   DefaultAnalyticService({Logger? logger}) : _logger = logger ?? defaultLogger;
-  
+
   final _performers = <AnalyticActionPerformer<AnalyticAction>>{};
   final Logger _logger;
 

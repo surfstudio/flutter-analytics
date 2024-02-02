@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:analytics/core/analytic_stragery.dart';
+import 'package:analytics/core/analytic_strategy.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:example/app_metrica/app_metrica_analytic_event.dart';
 
-class AppMetricaAnalyticStrategy extends AnalyticStragery<AppMetricaAnalyticEvent> {
+class AppMetricaAnalyticStrategy extends AnalyticStrategy<AppMetricaAnalyticEvent> {
   AppMetricaAnalyticStrategy();
 
   @override

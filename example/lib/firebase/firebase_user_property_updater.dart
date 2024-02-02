@@ -17,7 +17,8 @@ import 'package:example/firebase/firebase_string_x.dart';
 import 'package:example/firebase/firebase_user_property.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class FirebaseUserPropertyUpdaterStrategy extends AnalyticStragery<FirebaseUserProperty> {
+class FirebaseUserPropertyUpdaterStrategy
+    extends AnalyticStrategy<FirebaseUserProperty> {
   final FirebaseAnalytics _firebaseAnalytics;
 
   FirebaseUserPropertyUpdaterStrategy(this._firebaseAnalytics);

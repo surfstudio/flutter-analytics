@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-import 'package:analytics/core/analytic_stragery.dart';
+import 'package:analytics/core/analytic_strategy.dart';
 import 'package:example/firebase/firebase_analytic_event.dart';
 import 'package:example/firebase/firebase_string_x.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class FirebaseAnalyticEventSenderStrategy extends AnalyticStragery<FirebaseAnalyticEvent> {
+class FirebaseAnalyticEventSenderStrategy
+    extends AnalyticStrategy<FirebaseAnalyticEvent> {
   final FirebaseAnalytics _firebaseAnalytics;
 
   FirebaseAnalyticEventSenderStrategy(this._firebaseAnalytics);

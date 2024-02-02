@@ -14,7 +14,7 @@
 
 import 'package:analytics/core/analytic_action.dart';
 import 'package:analytics/core/analytic_action_performer.dart';
-import 'package:analytics/core/analytic_stragery.dart';
+import 'package:analytics/core/analytic_strategy.dart';
 import 'package:analytics/utils/logger.dart';
 import 'package:logger/logger.dart';
 
@@ -28,24 +28,27 @@ import 'package:logger/logger.dart';
 class AnalyticService implements AnalyticActionPerformer {
   /// Initialize analytic service without strategies.
   AnalyticService.empty({Logger? logger})
-      : _strategies = <AnalyticStragery>{},
+      : _strategies = <AnalyticStrategy>{},
         _logger = logger ?? defaultLogger;
 
   /// Initialize analytic service with strategies.
-  AnalyticService.withStrategies(this._strategies, {Logger? logger}) : _logger = logger ?? defaultLogger;
+  AnalyticService.withStrategies(this._strategies, {Logger? logger})
+      : _logger = logger ?? defaultLogger;
   final Logger _logger;
 
-  final Set<AnalyticStragery> _strategies;
+  final Set<AnalyticStrategy> _strategies;
 
   @override
   void performAction(AnalyticAction action) {
-    _getStrategiesByAction(action).forEach((strategy) => strategy.performAction(action));
+    _getStrategiesByAction(action)
+        .forEach((strategy) => strategy.performAction(action));
   }
 
   List<AnalyticActionPerformer<AnalyticAction>> _getStrategiesByAction(
     AnalyticAction event,
   ) {
-    final properStrategies = _strategies.where((strategies) => strategies.canHandle(event)).toList();
+    final properStrategies =
+        _strategies.where((strategies) => strategies.canHandle(event)).toList();
     if (properStrategies.isEmpty) {
       _logger.d(
         'No action performer for action:'
@@ -56,12 +59,12 @@ class AnalyticService implements AnalyticActionPerformer {
   }
 
   /// Add strategy to analytic service.
-  void addStrategy(AnalyticStragery strategy) {
+  void addStrategy(AnalyticStrategy strategy) {
     _strategies.add(strategy);
   }
 
   /// Remove strategy from analytic service.
-  void removeStrategy(AnalyticStragery strategy) {
+  void removeStrategy(AnalyticStrategy strategy) {
     _strategies.remove(strategy);
   }
 
@@ -71,12 +74,12 @@ class AnalyticService implements AnalyticActionPerformer {
   }
 
   /// Iterate over all strategies.
-  void forEach(void Function(AnalyticStragery strategy) action) {
+  void forEach(void Function(AnalyticStrategy strategy) action) {
     _strategies.forEach(action);
   }
 
   /// Check if a strategy is contained in the analytic service.
-  bool contains(AnalyticStragery strategy) {
+  bool contains(AnalyticStrategy strategy) {
     return _strategies.contains(strategy);
   }
 }

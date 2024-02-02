@@ -8,8 +8,12 @@ dependencies:
     path: ../
   appmetrica_plugin: ^1.4.0
   firebase_analytics: ^8.3.4
+  firebase_analytics_web: ^0.3.0+1
   firebase_core: ^1.8.0
+  firebase_core_web: ^1.6.5
   flutter:
+    sdk: flutter
+  flutter_web_plugins:
     sdk: flutter
 
 dev_dependencies:

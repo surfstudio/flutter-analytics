@@ -16,7 +16,8 @@ import 'package:analytics/core/analytic_strategy.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:example/app_metrica/app_metrica_analytic_event.dart';
 
-class AppMetricaAnalyticStrategy extends AnalyticStrategy<AppMetricaAnalyticEvent> {
+class AppMetricaAnalyticStrategy
+    extends AnalyticStrategy<AppMetricaAnalyticEvent> {
   AppMetricaAnalyticStrategy();
 
   @override

@@ -83,9 +83,9 @@ class TestAction extends AnalyticAction {}
 class SecondTestAction extends AnalyticAction {}
 
 class TestPerformer extends AnalyticActionPerformer<TestAction> {
-  final String? actionPerformed;
-
   const TestPerformer({this.actionPerformed});
+
+  final String? actionPerformed;
 
   @override
   void perform(TestAction action) {

@@ -16,18 +16,11 @@ import 'package:analytics/core/analytic_stragery.dart';
 import 'package:appmetrica_plugin/appmetrica_plugin.dart';
 import 'package:example/app_metrica/app_metrica_analytic_event.dart';
 
-class AppMetricaAnalyticStrategy
-    extends AnalyticStragery<AppMetricaAnalyticEvent> {
-  AppMetricaAnalyticStrategy() {
-    init();
-  }
+class AppMetricaAnalyticStrategy extends AnalyticStragery<AppMetricaAnalyticEvent> {
+  AppMetricaAnalyticStrategy();
 
   @override
   void performAction(AppMetricaAnalyticEvent action) {
     AppMetrica.reportEventWithMap(action.key, action.params);
-  }
-
-  void init() {
-    AppMetrica.activate(const AppMetricaConfig('insert_your_api_key_here'));
   }
 }

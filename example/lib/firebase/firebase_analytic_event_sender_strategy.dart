@@ -12,26 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:analytics/core/analytic_action.dart';
-import 'package:analytics/core/analytic_action_performer.dart';
-import 'package:example/firebase/const.dart';
+import 'package:analytics/core/analytic_strategy.dart';
 import 'package:example/firebase/firebase_analytic_event.dart';
+import 'package:example/firebase/firebase_string_x.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class FirebaseAnalyticEventSender
-    implements AnalyticActionPerformer<FirebaseAnalyticEvent> {
+class FirebaseAnalyticEventSenderStrategy
+    extends AnalyticStrategy<FirebaseAnalyticEvent> {
   final FirebaseAnalytics _firebaseAnalytics;
 
-  const FirebaseAnalyticEventSender(this._firebaseAnalytics);
+  FirebaseAnalyticEventSenderStrategy(this._firebaseAnalytics);
 
   @override
-  bool canHandle(AnalyticAction action) => action is FirebaseAnalyticEvent;
-
-  @override
-  void perform(FirebaseAnalyticEvent action) {
+  void performAction(FirebaseAnalyticEvent action) {
     final params = _cutParamsLength(action.params as Map<String, Object>);
     _firebaseAnalytics.logEvent(
-      name: _cutName(action.key),
+      name: action.key.cutName,
       parameters: params,
     );
   }
@@ -41,17 +37,9 @@ class FirebaseAnalyticEventSender
     final resultParams = <String, dynamic>{};
     for (final key in params.keys) {
       final value = params[key];
-      resultParams[_cutName(key)] = value is String ? _cutValue(value) : value;
+      resultParams[key.cutName] = value is String ? value.cutValue : value;
     }
 
     return resultParams;
   }
-
-  String _cutName(String name) => name.length <= maxEventKeyLength
-      ? name
-      : name.substring(0, maxEventKeyLength);
-
-  String _cutValue(String value) => value.length <= maxEventValueLength
-      ? value
-      : value.substring(0, maxEventValueLength);
 }

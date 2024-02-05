@@ -14,9 +14,7 @@
 
 import 'dart:async';
 
-import 'package:analytics/core/analytic_action.dart';
-import 'package:analytics/core/analytic_action_performer.dart';
-import 'package:analytics/impl/default_analytic_service.dart';
+import 'package:analytics/analytics.dart';
 import 'package:logger/logger.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
@@ -44,11 +42,10 @@ void main() {
     'Calling performAction method with correct action should work correctly',
     overridePrint(
       () {
-        final service = DefaultAnalyticService();
+        final strategy = TestStrategy(actionPerformed: actionPerformed);
 
-        const performer = TestPerformer(actionPerformed: actionPerformed);
-
-        service.addActionPerformer(performer);
+        final service =
+            AnalyticService.withStrategies({strategy}, logger: logger);
 
         final action = TestAction();
 
@@ -63,11 +60,10 @@ void main() {
     'When calling a method performAction with an incorrect action, '
     'the method d must be called from the logger',
     () async {
-      final service = DefaultAnalyticService(logger: logger);
+      final strategy = TestStrategy(actionPerformed: actionPerformed);
 
-      const performer = TestPerformer();
-
-      service.addActionPerformer(performer);
+      final service =
+          AnalyticService.withStrategies({strategy}, logger: logger);
 
       final action = SecondTestAction();
 
@@ -82,13 +78,12 @@ class TestAction extends AnalyticAction {}
 
 class SecondTestAction extends AnalyticAction {}
 
-class TestPerformer extends AnalyticActionPerformer<TestAction> {
-  const TestPerformer({this.actionPerformed});
-
+class TestStrategy extends AnalyticStrategy<TestAction> {
+  TestStrategy({this.actionPerformed});
   final String? actionPerformed;
 
   @override
-  void perform(TestAction action) {
+  void performAction(TestAction action) {
     // ignore: avoid_print
     print(actionPerformed);
   }

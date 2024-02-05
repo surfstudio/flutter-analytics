@@ -14,7 +14,7 @@
 
 import 'package:analytics/analytics.dart';
 import 'package:example/analytics_events.dart';
-import 'package:example/firebase/firebase_analytic_event_sender.dart';
+import 'package:example/firebase/firebase_analytic_event_sender_strategy.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 
@@ -46,10 +46,10 @@ class MyHomePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   late AnalyticService _analyticsService;
 
@@ -58,8 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     final analytics = FirebaseAnalytics();
-    _analyticsService = DefaultAnalyticService()
-      ..addActionPerformer(FirebaseAnalyticEventSender(analytics));
+    _analyticsService = AnalyticService.withStrategies(
+      {FirebaseAnalyticEventSenderStrategy(analytics)},
+    );
   }
 
   @override

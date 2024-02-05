@@ -12,6 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-abstract class HasMapParams {
-  Map<String, dynamic> get params;
+import 'package:analytics/core/analytic_strategy.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:example/app_metrica/app_metrica_analytic_event.dart';
+
+class AppMetricaAnalyticStrategy extends AnalyticStrategy<AppMetricaAnalyticEvent> {
+  AppMetricaAnalyticStrategy();
+
+  @override
+  void performAction(AppMetricaAnalyticEvent action) {
+    AppMetrica.reportEventWithMap(action.key, action.params);
+  }
 }

@@ -25,7 +25,7 @@ class FirebaseAnalyticEventSenderStrategy
 
   @override
   void performAction(FirebaseAnalyticEvent action) {
-    final params = _cutParamsLength(action.params as Map<String, Object>);
+    final params = _cutParamsLength(action.params);
     _firebaseAnalytics.logEvent(
       name: action.key.cutName,
       parameters: params,

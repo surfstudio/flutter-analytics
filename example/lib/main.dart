@@ -46,10 +46,10 @@ class MyHomePage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   late AnalyticService _analyticsService;
 
@@ -102,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _analyticsService.performAction(action);
 
     ScaffoldMessenger.of(_scaffoldKey.currentContext!).hideCurrentSnackBar();
-    ScaffoldMessenger.of(_scaffoldKey.currentContext!).showSnackBar(SnackBar(content: Text('action send: $action')));
+    ScaffoldMessenger.of(_scaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(content: Text('action send: $action')));
   }
 }

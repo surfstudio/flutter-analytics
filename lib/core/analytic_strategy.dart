@@ -13,13 +13,16 @@
 // limitations under the License.
 
 import 'package:analytics/core/analytic_action.dart';
+import 'package:analytics/core/analytic_action_performer.dart';
 
-/// An interface for analytic action performers.
+/// Base class for analytic strategies.
 ///
-/// This interface define a method for sending analytic actions.
-/// Classes that implement this interface provide the actual analytic action performing functionality.
-// ignore: one_member_abstracts
-abstract class AnalyticActionPerformer<A extends AnalyticAction> {
-  /// Method of sending sending analytic actions.
-  void performAction(A action);
+/// This class is an abstract base class for analytic strategies. A analytic strategy is a class
+/// that provides a specific way of sending analytic action. To create
+/// a custom analytic strategy, you should extend this class and implement the `performAction`
+/// method.
+abstract class AnalyticStrategy<A extends AnalyticAction>
+    extends AnalyticActionPerformer<A> {
+  /// Method that determines whether an analytical strategy is capable of handling an incoming action.
+  bool canHandle(AnalyticAction action) => action is A;
 }

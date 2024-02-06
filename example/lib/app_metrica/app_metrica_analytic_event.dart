@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-abstract class HasMapParams {
-  Map<String, dynamic> get params;
-}
+import 'package:analytics/analytics.dart';
+import 'package:example/base/has_key.dart';
+import 'package:example/base/has_map_params.dart';
+
+abstract class AppMetricaAnalyticEvent
+    implements AnalyticAction, HasKey, HasMapParams {}

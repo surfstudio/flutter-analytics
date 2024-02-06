@@ -16,9 +16,10 @@ This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) t
 Interface for working with analytic services.  
 The library is supposed to unify work with various analytic services. The main actors are:
 
-* **AnalyticAction** — any action that is valuable for analytics. Usually it is a "button pressed" or "screen opened" type of event but the main criterion is a possibility to be handled by `AnalyticActionPerformer`.
-* **AnalyticActionPerformer** — a performer of specific actions used to incapsulate work with a certain analytics service. Typically implemented by transforming `AnalyticAction` into a required format as well as calling *send()* of a third-party library.
-* **AnalyticService** — a unified entry point for several `AnalyticActionPerformer`s.
+* **AnalyticAction** — any action that is valuable for analytics. Usually it is a "button pressed" or "screen opened" type of event but the main criterion is a possibility to be handled by `AnalyticStragery`.
+* **AnalyticActionPerformer** - an interface for analytic action performers. This class is an abstract base class for analytic strategies. 
+* **AnalyticStragery** — a class that provides a special way to send an analytical action. To create a custom analytic strategy, you should extend this class and implement the `performAction` method.
+* **AnalyticService** — a class that provides a way to send analytic action using a set of analytic strategies. To use this class, you should create an instance of it with a set of analytic strategies, and then call the `performAction` method to send analytic action.
 
 ## Example
 
@@ -43,32 +44,28 @@ The easiest interaction with the library is as follows:
     }
     ```
 
-2. Implement action performer:
+2. Implement analitic strategy:
 
     ```dart
-    class MyAnalyticActionPerformer
+    class MyAnalyticStrategy
         implements AnalyticActionPerformer<MyAnalyticAction> {
-        final SomeAnalyticService _service;
+        final SomeAnalyticsApi _analyticsApi;
 
-        MyAnalyticActionPerformer(this._service);
-
-        @override
-        bool canHandle(AnalyticAction action) => action is MyAnalyticAction;
+        SomeAnalyticsApi(this._analyticsApi);
 
         @override
         void perform(MyAnalyticAction action) {
-            _service.send(action.key, action.value);
+            _analyticsApi.send(action.key, action.value);
         }
     }
     ```
 
-3. Add performer to the service:
+3. Сreate an AnalyticService with your strategy:
 
     ```dart
-        final analyticService = DefaultAnalyticService();
-        analyticService.addActionPerformer(
-            MyAnalyticActionPerformer(SomeAnalyticService()),
-        );
+        final analyticService = AnalyticService.withStrategies({
+            FirebaseAnalyticEventSenderStrategy(analytics),
+        });
     ```
 
 Usage:
@@ -87,6 +84,19 @@ dependencies:
 ```
 
 <p>At this moment, the current version of <code>analytics</code> is <a href="https://pub.dev/packages/analytics"><img style="vertical-align:middle;" src="https://img.shields.io/pub/v/analytics.svg" alt="analytics version"></a>.</p>
+
+## Migrating from 1.x.x to 2.x.x
+
+1.x.x
+
+```dart
+    final analyticService = DefaultAnalyticService();
+    analyticService.addActionPerformer(
+        MyAnalyticActionPerformer(SomeAnalyticService()),
+    );
+```
+
+Starting from version 2.0.0, sending an event to a specific analytics service is implemented using strategies. The `AnalyticService` class stores these strategies. Implement analytics strategies using the `AnalyticStrategy` egy class.
 
 ## Changelog
 

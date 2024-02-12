@@ -98,6 +98,12 @@ dependencies:
 
 Starting from version 2.0.0, sending an event to a specific analytics service is implemented using strategies. The `AnalyticService` class stores these strategies. Implement analytics strategies using the `AnalyticStrategy` egy class.
 
+```dart
+    final analyticService = AnalyticService.withStrategies({
+        MyAnalyticStrategy(analytics),
+    });
+```
+
 ## Changelog
 
 All notable changes to this project will be documented in [this file](./CHANGELOG.md).

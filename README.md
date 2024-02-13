@@ -48,13 +48,13 @@ The easiest interaction with the library is as follows:
 
     ```dart
     class MyAnalyticStrategy
-        implements AnalyticActionPerformer<MyAnalyticAction> {
+        extends AnalyticStrategy<MyAnalyticAction> {
         final SomeAnalyticsApi _analyticsApi;
 
         SomeAnalyticsApi(this._analyticsApi);
 
         @override
-        void perform(MyAnalyticAction action) {
+        void performAction(MyAnalyticAction action) {
             _analyticsApi.send(action.key, action.value);
         }
     }
@@ -63,9 +63,9 @@ The easiest interaction with the library is as follows:
 3. Сreate an AnalyticService with your strategy:
 
     ```dart
-        final analyticService = AnalyticService.withStrategies({
-            FirebaseAnalyticEventSenderStrategy(analytics),
-        });
+    final analyticService = AnalyticService.withStrategies({
+        MyAnalyticStrategy(analytics),
+    });
     ```
 
 Usage:
@@ -97,6 +97,12 @@ dependencies:
 ```
 
 Starting from version 2.0.0, sending an event to a specific analytics service is implemented using strategies. The `AnalyticService` class stores these strategies. Implement analytics strategies using the `AnalyticStrategy` egy class.
+
+```dart
+    final analyticService = AnalyticService.withStrategies({
+        MyAnalyticStrategy(analytics),
+    });
+```
 
 ## Changelog
 

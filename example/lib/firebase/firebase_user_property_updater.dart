@@ -12,35 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:analytics/core/analytic_action.dart';
-import 'package:analytics/core/analytic_action_performer.dart';
-import 'package:example/firebase/const.dart';
+import 'package:analytics/analytics.dart';
+import 'package:example/firebase/firebase_string_x.dart';
 import 'package:example/firebase/firebase_user_property.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class FirebaseUserPropertyUpdater
-    implements AnalyticActionPerformer<FirebaseUserProperty> {
+class FirebaseUserPropertyUpdaterStrategy
+    extends AnalyticStrategy<FirebaseUserProperty> {
   final FirebaseAnalytics _firebaseAnalytics;
 
-  FirebaseUserPropertyUpdater(this._firebaseAnalytics);
+  FirebaseUserPropertyUpdaterStrategy(this._firebaseAnalytics);
 
   @override
-  bool canHandle(AnalyticAction action) => action is FirebaseUserProperty;
-
-  @override
-  void perform(FirebaseUserProperty action) {
+  void performAction(FirebaseUserProperty action) {
     _firebaseAnalytics.setUserProperty(
-      name: _cutName(action.key),
-      value: _cutValue(action.value),
+      name: action.key.cutName,
+      value: action.value.cutValue,
     );
   }
-
-  String _cutName(String name) => name.length <= maxSetUserPropertyKeyLength
-      ? name
-      : name.substring(0, maxSetUserPropertyKeyLength);
-
-  String _cutValue(String value) =>
-      value.length <= maxSetUserPropertyValueLength
-          ? value
-          : value.substring(0, maxSetUserPropertyValueLength);
 }

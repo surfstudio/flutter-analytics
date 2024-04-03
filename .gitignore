@@ -33,6 +33,9 @@
 build/
 .fvm/flutter_sdk
 
+# FVM
+.fvm/
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle

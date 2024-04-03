@@ -12,10 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:analytics/analytics.dart';
+import 'package:analytics/core/analytic_strategy.dart';
+import 'package:appmetrica_plugin/appmetrica_plugin.dart';
+import 'package:example/app_metrica/app_metrica_analytic_event.dart';
 
-/// A unified entry point for several [AnalyticActionPerformer]s.
-// ignore: one_member_abstracts
-abstract class AnalyticService<A extends AnalyticAction> {
-  void performAction(A action);
+class AppMetricaAnalyticStrategy
+    extends AnalyticStrategy<AppMetricaAnalyticEvent> {
+  AppMetricaAnalyticStrategy();
+
+  @override
+  void performAction(AppMetricaAnalyticEvent action) {
+    AppMetrica.reportEventWithMap(action.key, action.params);
+  }
 }

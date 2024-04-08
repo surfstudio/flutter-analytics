@@ -13,12 +13,12 @@ This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) t
 
 ## Overview
 
-Interface for working with analytic services.  
+Interface for working with analytic services.
 The library is supposed to unify work with various analytic services. The main actors are:
 
-* **AnalyticAction** — any action that is valuable for analytics. Usually it is a "button pressed" or "screen opened" type of event but the main criterion is a possibility to be handled by `AnalyticStragery`.
-* **AnalyticActionPerformer** - an interface for analytic action performers. This class is an abstract base class for analytic strategies. 
-* **AnalyticStragery** — a class that provides a special way to send an analytical action. To create a custom analytic strategy, you should extend this class and implement the `performAction` method.
+* **AnalyticAction** — any action that is valuable for analytics. Usually it is a "button pressed" or "screen opened" type of event but the main criterion is a possibility to be handled by `AnalyticStrategy`.
+* **AnalyticActionPerformer** - an interface for analytic action performers. This class is an abstract base class for analytic strategies.
+* **AnalyticStrategy** — a class that provides a special way to send an analytical action. To create a custom analytic strategy, you should extend this class and implement the `performAction` method.
 * **AnalyticService** — a class that provides a way to send analytic action using a set of analytic strategies. To use this class, you should create an instance of it with a set of analytic strategies, and then call the `performAction` method to send analytic action.
 
 ## Example
@@ -44,7 +44,7 @@ The easiest interaction with the library is as follows:
     }
     ```
 
-2. Implement analitic strategy:
+2. Implement analytic strategy:
 
     ```dart
     class MyAnalyticStrategy
@@ -60,7 +60,7 @@ The easiest interaction with the library is as follows:
     }
     ```
 
-3. Сreate an AnalyticService with your strategy:
+3. Create an AnalyticService with your strategy:
 
     ```dart
     final analyticService = AnalyticService.withStrategies({

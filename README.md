@@ -7,7 +7,7 @@
 
 Made by [Surf 🏄‍♂️🏄‍♂️🏄‍♂️](https://surf.dev/)
 
-[![Build Status](https://shields.io/github/workflow/status/surfstudio/flutter-analytics/Analysis?logo=github&logoColor=white)](https://github.com/surfstudio/flutter-analytics)
+[![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/flutter-analytics/on_pull_request.yml?logo=github&logoColor=white)](https://github.com/surfstudio/flutter-analytics)
 [![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/flutter-analytics?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/flutter-analytics)
 [![Pub Version](https://img.shields.io/pub/v/analytics?logo=dart&logoColor=white)](https://pub.dev/packages/analytics)
 [![Pub Likes](https://badgen.net/pub/likes/analytics)](https://pub.dev/packages/analytics)

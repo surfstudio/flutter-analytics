@@ -14,10 +14,6 @@ Made by [Surf 🏄‍♂️🏄‍♂️🏄‍♂️](https://surf.dev/)
 [![Pub popularity](https://badgen.net/pub/popularity/analytics)](https://pub.dev/packages/analytics/score)
 ![Flutter Platform](https://badgen.net/pub/flutter-platform/analytics)
 
-This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) toolkit made by [Surf](https://surf.ru).
-
-[![Analytics](https://i.ibb.co/WHdqSLd/Analytics.png)](https://github.com/surfstudio/SurfGear)
-
 ## Overview
 
 Interface for working with analytic services.

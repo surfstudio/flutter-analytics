@@ -1,15 +1,18 @@
 # Analytics
 
-[![Build Status](https://shields.io/github/workflow/status/surfstudio/flutter-analytics/Analysis?logo=github&logoColor=white)](https://github.com/surfstudio/flutter-analytics)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/surfstudio/flutter-open-source/blob/887525c23f4d57a2d96fc2e6a31e15d1e29d1787/assets/logo_white.png">
+  <img alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://github.com/surfstudio/flutter-open-source/blob/887525c23f4d57a2d96fc2e6a31e15d1e29d1787/assets/logo_black.png" width ="200">
+</picture>
+
+Made by [Surf 🏄‍♂️🏄‍♂️🏄‍♂️](https://surf.dev)
+
+[![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/flutter-analytics/on_pull_request.yml?logo=github&logoColor=white)](https://github.com/surfstudio/flutter-analytics)
 [![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/flutter-analytics?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/flutter-analytics)
 [![Pub Version](https://img.shields.io/pub/v/analytics?logo=dart&logoColor=white)](https://pub.dev/packages/analytics)
 [![Pub Likes](https://badgen.net/pub/likes/analytics)](https://pub.dev/packages/analytics)
 [![Pub popularity](https://badgen.net/pub/popularity/analytics)](https://pub.dev/packages/analytics/score)
 ![Flutter Platform](https://badgen.net/pub/flutter-platform/analytics)
-
-This package is part of the [SurfGear](https://github.com/surfstudio/SurfGear) toolkit made by [Surf](https://surf.ru).
-
-[![Analytics](https://i.ibb.co/WHdqSLd/Analytics.png)](https://github.com/surfstudio/SurfGear)
 
 ## Overview
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+Rebranding
+
 ## 2.0.1
 
 Updated readme file

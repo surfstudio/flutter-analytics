@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+Correct logo position
+
 ## 2.0.2
 
 Rebranding
